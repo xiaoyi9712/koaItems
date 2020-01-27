@@ -77,3 +77,10 @@ git add README.md
 git commit -m "first commit"
 git remote add origin https://github.com/xiaoyi9712/koaItem.git
 git push -u origin master
+
+
+右键点击文件下的git bash here
+git status //检查文件状态 增删改查
+git add 文件名 //增加提交的文件名字
+git commit -m "此次提交的文字描述"//描述
+git push //推送到github
