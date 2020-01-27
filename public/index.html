@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/index.css">
+</head>
+<body>
+   
+        <h3>可以查找输入数字的所有因数</h3>
+        <input type="text" placeholder="please input a number" id="text"><br>
+        <button id='btn'>点击查找这个数字的因数</button>
+   
+    <script>
+        let Text = document.getElementById("text"),
+            Btn = document.getElementById("btn");
+
+            Btn.onclick=function(){
+                window.location.href=`/${Text.value}`
+            }
+    </script>
+</body>
+</html>
