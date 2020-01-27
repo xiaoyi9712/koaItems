@@ -1,0 +1,79 @@
+配置node
+ 
+1.node中文网下载对应系统位数的node
+2.验证node安装成功 cmd运行 node -v,如果报错就把node配置全局变量 计算机-属性-高级系统设置-环境变量-系统变量里的path-点击编辑-把node路径复制好放到最后面
+
+node自带npm
+
+node 有自带一些模块,没有的模块用npm指令下载模块
+
+node常用指令 cd..返回上一层 cd 05  node 03.js
+
+npm常用指令 ctrl+ c打断当前进程
+
+ 初始化项目 npm init -y
+
+
+koa & express
+
+
+koa 和express差不多搭建服务的
+koa 加载静态资源的时候会自动给public静态文件夹里面的静态css文件 html文件自动加载路由 当然需要 koa-static包,public的路径要找对
+css要用<link rel="stylesheet" href="路径">,才能渲染出来
+使用方法:
+const Koa = require("koa"),
+const static= require ("koa-static"),
+const app = new Koa(),
+app.use(static("public")),
+app.listen(5000,()=>{
+	log("5000端口成功运行")
+})
+这时候访问localhost5000/index.html或其他的public下面的静态资源
+
+express和这个koa一样,甚至不需要下载其他的包. 
+express和koa,如果访问根路径,会自动找public中的index.html文件
+
+app.get("/index",(req,res)=>{
+	//获取get数据
+	log(req.query)
+})
+express获取get发过来的数据,用req.query获取
+koa中cxt融合了express中的req res,
+koa中要引入koa-router这个包来配置路由
+
+获取POST数据,koa要引入koa-bodyparser包,cxt.request.body获取POST数据,并且解析post数据在前,配置路由在后.app.use(bodyparser())在前,
+express引入bodyparser包,req.query获取post数据
+
+动态路由获取那个id,koa  cxt.params,express req.params
+
+eg:
+app.get("/:id",cxt=>{
+	//获取动态路由id
+	log(cxt.params)
+})
+
+后台返回给前台数据 express是res.send(...),
+koa是cxt.body=....
+
+
+bodyparser使用这个包时,
+app.get("/numer", async function(){
+	
+})
+
+或koa-bodyparser使用这个包时,router.get("/n",async function(){
+	
+}),如果要用模板引擎渲染的话最好加上async,因为可以做异步处理
+
+ejs要用render函数,render(app,{
+	root:path.join(--dirname,"view")//渲染在	当前文件夹同级目录的view文件夹里面的	index.ejs,index.ejs里面就放html文件
+
+	template用<%-body%>
+	html用<%=data%>输出
+})
+
+git init
+git add README.md
+git commit -m "first commit"
+git remote add origin https://github.com/xiaoyi9712/koaItem.git
+git push -u origin master
